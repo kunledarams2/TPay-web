@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thrift LandingPage</title>
     <!-- <link rel="stylesheet" href="dist/output/css"/> -->
+    <link rel ="stylesheet" href="css/tailwind.css"/>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -20,12 +21,12 @@
   <body class="">
     <!-- header Desktop -->
     <section class="mt-3 px-6 hidden lg:block">
-      <div class="border border-[gray] rounded-full flex py-[2em]">
-        <div class="flex justify-center items-center w-[1300px]">
+      <div id ="header" class="fixed top-10 left-20 right-20 z-50 border border-[gray] rounded-full flex py-[20em]">
+        <div class="flex justify-center items-center w-[1300px] mx-auto">
           <div class="px-4">
             <svg
               width="46"
-              height="50"
+              height="80"
               viewBox="0 0 46 50"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -62,12 +63,12 @@
             <p class="px-3 nav-item" id="how-it-works">How it Works</p>
             <p class="px-3 nav-item" id="faqs">FAQs</p>
           </div>
-          <div class="flex justify-end">
+          <div class="flex justify-end ml-40">
             <button id="contact-btn"
               class="w-[76px] h-[22px] text-md bg-[#CC3366] rounded-md"
               style="
-                width: 96px;
-                height: 30px;
+                width: 106px;
+                height: 40px;
                 font-size: 1rem;
                 color: beige;
                 background-color: #cc3366;
@@ -84,11 +85,12 @@
     <script>
       // Get references to the elements
       const home = document.getElementById('home');
-      const whyUs = document.getElementById('why-us');
+      const whyUs = document.getElementById('why-us-desktop');
       const aboutUs = document.getElementById('about-us');
       const howItWorks = document.getElementById('how-it-works');
       const faqs = document.getElementById('faqs');
       const contactBtn = document.getElementById('contact-btn');
+      const image = document.getElementById('image2');
   
       // Function to scroll to a specific element
       function scrollToElement(element) {
@@ -96,12 +98,40 @@
       }
   
       // Add click event listeners to the elements
-      home.addEventListener('click', () => scrollToElement(document.body));
-      whyUs.addEventListener('click', () => scrollToElement(document.getElementById('why-us-section')));
+      home.addEventListener('click', function() {
+        
+        scrollToElement(document.body);
+        //fadeInImage();
+        setTimeout(() => {
+            image.classList.add('fade-in');
+        }, 1000);
+       
+      } );
+      whyUs.addEventListener('click', () => scrollToElement(document.getElementById('why-us-dasktop')));
       aboutUs.addEventListener('click', () => scrollToElement(document.getElementById('about-us-section')));
       howItWorks.addEventListener('click', () => scrollToElement(document.getElementById('how-it-works-section')));
       faqs.addEventListener('click', () => scrollToElement(document.getElementById('faqs-section')));
       contactBtn.addEventListener('click', () => scrollToElement(document.getElementById('contact-us-section')));
+
+      // function change the header bg while scrolling    <!-- header.classList.remove("bg-gray-400"); -->
+
+      document.addEventListener("DOMContentLoaded", function() {
+        var header = document.getElementById("header");
+      
+        window.addEventListener("scroll", function() {
+          if (window.scrollY > 0) {
+            header.style.backgroundColor ='#eeee';
+          } else {
+           header.style.backgroundColor ='#FFFFFF'
+          }
+        });
+      });
+
+      setTimeout(() => {
+        image.classList.add('fade-in');
+    }, 1000);
+
+
     </script>
     <!-- header Mobile-->
     <section class="mt-3 px-6 lg:hidden">
@@ -183,10 +213,10 @@
     </section>
 
     <!-- hero Desktop -->
-    <section id="home" class="grid grid-cols-2 mt-12 px-6">
-      <div id="home" class="hidden lg:block xl:block">
-        <h1 class="xl:text-[72px]" style="font-size: 72px; color: #cc3366">
-          Save Smarter, Together
+    <section id="home" class="grid grid-cols-2 mt-12 px-6 pt-40 pl-20 pr-20">
+      <div id="home" class="hidden  lg:block xl:block">
+        <h1  class="font-custom" style="font-size: 72px; color: #cc3366;font: weight 800px;font-family: 'inter';">
+         <b>Save Smarter,<br/> Together</b>  
         </h1>
         <p
           class="xl:text-[21px]"
@@ -201,7 +231,7 @@
             background-color: #333333;
             font-size: 1rem;
             width: 165px;
-            height: 30px;
+            height: 40px;
             border-radius: 8px;
             margin-left: 0.6em;
             margin-top: 2em;
@@ -211,9 +241,10 @@
           Get the App
         </button>
       </div>
+      <!-- class="mx-auto" -->
       <div class="">
         <div class="hidden lg:block xl:w-[640px]">
-          <img src="./assests/Image.jpeg" alt="Description" class="mx-auto" />
+          <img id ='image'src="./assests/Image.jpeg" alt="Description"  class=" mx-auto " />  
         </div>
       </div>
     </section>
@@ -221,13 +252,13 @@
     <hr class="mt-8" />
 
     <!-- why us Desktop-->
-    <section id="why-us" class="grid grid-cols-2 px-6">
+    <section id="why-us-desktop" class="grid grid-cols-2 px-6 pr-20 pl-20">
       <div class="hidden lg:block">
-        <p style="font-size: 39px; margin-top: 1em">Why us?</p>
+        <p class='slide-text-left' style="font-size: 39px; margin-top: 1em">Why us?</p>
       </div>
 
       <div class="hidden lg:block">
-        <p class="" style="font-size: 15px; color: #444a5b; margin-top: 2em">
+        <p class="slide-text-right" style="font-size:20px;  font-family: 'Inter';color: #444a5b; margin-top: 2em">
           ThriftPay is your trusted Thrift savings partner, offering a seamless
           platform for you to achieve your financial goals. Our platform
           connects you with a community of like-minded savers, where you can
@@ -254,13 +285,58 @@
 
     <!-- why us Desktop 1-->
     <section
-      class="px-6 mt-8 bg-[#E0E0E0] rounded-lg rounded-tl-lg rounded-tr-lg"
+      class="px-6 mt-8 bg-[#E0E0E0] rounded-lg rounded-tl-lg rounded-tr-lg  grid grid-cols-2 mt-12 px-6 pt-20 "
       style="background-color: #e0e0e0"
     >
+    <div class="hidden lg:block"> 
+        <div class=" grid grid-cols-3 mt-12 px-6 " >
+            <div class="col-span-1" >
+                <img src="./assests/Number.svg" alt="Description" class="mx-auto w-20% flex justify-start" />
+            </div>
+           <div class="col-span-2"  >
+            <h1  class="font-custom" style="font-size: 60px; color: #111217;font: weight 800px;font-family: 'inter';">
+                <b>
+                  Tailored <br> 
+                  Thrift Plans
+                </b> 
+                 </h1>
+                 <p
+                   class="xl:text-[21px]"
+                   style="color: #444A5B; font-size: 1.2rem; padding-left: 0.6em"
+                 >
+                 Our Thrift plans are meticulously designed to 
+                 match your income level and financial aspirations. 
+                 Whether you're saving for a dream vacation, a 
+                 new home, or simply building a rainy-day fund, 
+                 ThriftPay offers plans that suit your specific needs.
+                  
+                 </p>
+           </div>
+           
+        </div>
+    </div>
+
+    
+
       <div class="hidden lg:block">
-        <img src="./assests/WhyUsImg1.png" alt="Description" class="mx-auto" />
+        <img src="./assests/WhyUsMobileImg1.png" alt="Description" class="mx-auto  " />
       </div>
+      <!-- <div class="hidden lg:block"> w-auto h-auto lg:w-[200px] lg:h-[100px]
+        <img src="./assests/WhyUsImg1.png" alt="Description" class="mx-auto" />
+      </div> -->
     </section>
+
+    <style>
+        .grid-cols-3 {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      
+        @media (min-width: 768px) {
+          .grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+        }
+      </style>
 
     <!-- why us Mobile 1-->
     <section
@@ -285,12 +361,38 @@
 
     <!-- why us Desktop 2-->
     <section
-      class="px-6 rounded-lg rounded-tl-lg rounded-tr-lg"
+      class="px-6 rounded-lg rounded-tl-lg rounded-tr-lg  grid grid-cols-2  "
       style="background-color: #faebf0; padding-top: 0px"
     >
-      <div class="hidden lg:block">
-        <img src="./assests/WhyUsImg2.png" alt="Description" class="mx-auto" />
+      <div class="hidden lg:block pt-20">
+        <!-- <img src="./assests/WhyUsImg2.png" alt="Description" class="mx-auto" /> -->
+        <img src="./assests/WhyUsMobileImg2.png" alt="Description" class="mx-auto" />
       </div>
+
+      <div class="hidden lg:block"> 
+        <div class=" grid grid-cols-3 mt-12 px-6 " >
+            <div class="col-span-1" >
+                <img src="./assests/Number2.svg" alt="Description" class="mx-auto w-20% flex justify-start" />
+            </div>
+           <div class="col-span-2"  >
+            <h1  class="font-custom" style="font-size: 60px; color: #111217;font: weight 800px;font-family: 'inter';">
+                <b>
+                    Real-time <br/> Transparency <br> 
+                  
+                </b> 
+                 </h1>
+                 <p
+                   class="xl:text-[21px]"
+                   style="color: #444A5B; font-size: 1.2rem; padding-left: 0.6em"
+                 >
+                 Stay informed every step of the way with our transparent transaction system. 
+                 Easily track your thrift contributions, and payouts in real-time, directly from your mobile device. With ThriftPay, you have the power to monitor all thrift members and observe every transaction within your thrift group or plan in real-time. 
+                  
+                 </p>
+           </div>
+           
+        </div>
+    </div>
     </section>
 
     <!-- why us Mobile 2-->
@@ -316,11 +418,41 @@ Transparency</p>
 
     <!-- why us Desktop 3-->
     <section
-      class="px-6 rounded-lg rounded-tl-lg rounded-tr-lg"
+      class="px-6 rounded-lg rounded-tl-lg rounded-tr-lg grid grid-cols-2   pt-20"
       style="background-color: #e3fff2; padding-top: 0px"
     >
-      <div class="hidden lg:block">
-        <img src="./assests/WhyUsImg3.png" alt="Description" class="mx-auto" />
+
+    <div class="hidden lg:block"> 
+        <div class=" grid grid-cols-3 mt-12 px-6 " >
+            <div class="col-span-1" >
+                <img src="./assests/Number3.svg" alt="Description" class="mx-auto w-20% flex justify-start" />
+            </div>
+           <div class="col-span-2"  >
+            <h1  class="font-custom" style="font-size: 60px; color: #111217;font: weight 800px;font-family: 'inter';">
+                <b>
+                    Secure <br/>
+                    Platform
+                </b> 
+                 </h1>
+                 <p
+                   class="xl:text-[21px]"
+                   style="color: #444A5B; font-size: 1.2rem; padding-left: 0.0em"
+                 >
+                 Your financial security is paramount to us. At ThriftPay, 
+                 we go the extra mile to ensure that every aspect of your 
+                 savings experience is safeguarded. All thrift savers on our 
+                 platform undergo thorough verification processes to ensure 
+                 compliance and security in every thrift plan. We verify the 
+                 creditworthiness of our users, providing you with peace of
+                 mind as you embark on your savings journey.
+                  
+                 </p>
+           </div>
+           
+        </div>
+    </div>
+      <div class="hidden lg:block pt-20">
+        <img src="./assests/WhyUsMobileImg3.png" alt="Description" class="mx-auto lg:w-[100px] lg:h-[100px]" />
       </div>
     </section>
 
@@ -350,8 +482,8 @@ Platform</p>
       <div  id="about-us"
         class="hidden lg:block flex-col justify-center text-center items-center mt-5"
       >
-        <h1 class=" " style="font-size: 60px">About Us</h1>
-        <p class="text-center px-40" style="font-size: 15px; color: #1d1f1e">
+        <h1 class=" " style="font-size: 60px"> <b>About Us</b></h1>
+        <p class="text-center px-40" style="font-size: 20px; color: #444A5B; font-weight: 400">
           At ThriftPay, we are passionate about empowering individuals to take
           control of their financial futures. We believe that everyone deserves
           the opportunity to save smartly, grow their wealth, and achieve their
@@ -359,7 +491,7 @@ Platform</p>
           innovation, we've built a platform that redefines the way people
           approach Thrift saving.
         </p>
-        <button class="flex justify-center mt-5 border border-grey px-4 py-2">
+        <button class=" justify-center mt-5 border border-grey px-4 py-2  ">
           Learn more
           <span class="mt-1 pl-1">
             <img src="./assests/Arrow.jpeg" alt="Description" class="mx-auto" />
@@ -459,7 +591,7 @@ Platform</p>
           innovation, we've built a platform that redefines the way people
           approach Thrift saving.
         </p>
-        <button class="flex mt-5 border border- grey px-4 py-2">
+        <button class="flex mt-5 border border- grey px-4 py-2 ">
           Learn more
           <span class="mt-1 pl-1">
             <img src="./assests/Arrow.jpeg" alt="Description" class="mx-auto" />

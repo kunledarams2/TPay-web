@@ -1,0 +1,126 @@
+
+@font-face {
+    font-family: 'Sora';
+    src: 
+         url('../fonts/sora/Sora-Bold.ttf') format('truetype');
+    /* Add more src lines for additional font file formats
+    url('../fonts/sora/Sora-Regular.ttf') format('regular'), */
+  }
+
+  /* @font-face {
+    font-family: 'Sora';
+    src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+  } */
+
+  .font-custom {
+    font-family: 'Sora', sans-serif;
+  }
+
+  /* CSS animation to slide text from left */
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+
+  .slide-text-right {
+    font-family: Arial, sans-serif; /* Add your preferred font family */
+    font-size: 15px;
+    color: #444a5b;
+    margin-top: 2em;
+    animation: slideFromRight 1s ease-in-out; /* Add animation */
+}
+
+/* Animation from left */
+@keyframes slideFromRight {
+    from {
+        transform: translatex(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-text-left {
+    font-family: Arial, sans-serif; /* Add your preferred font family */
+    font-size: 15px;
+    color: #444a5b;
+    margin-top: 2em;
+    animation: slideFromLeft 1s ease-in-out; /* Add animation */
+}
+
+@keyframes slideFromLeft {
+    from {
+        transform: translatex(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+.image-container {
+    position: relative;
+}
+
+.fade-out-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity 1s ease-in-out; /* Smooth transition */
+}
+
+.fade-out-image.fade-out {
+    opacity: 0;
+}
+
+
+/* Define the fade-in and fade-out animations */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0;
+        transform: translateY(-100%);
+     }
+    to {
+        opacity: 1; 
+        transform: translateY(0);
+       
+    }
+  }
+
+
+  @keyframes slideFromUpdown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+  
+  /* Apply fade-in and fade-out animations to the image */
+  #image {
+    animation: fadeIn 2s ease-in-out forwards;
+    /* transform: translateY(-100%); */
+  }
+  
+  #image.fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+  }

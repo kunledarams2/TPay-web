@@ -16,7 +16,8 @@ module.exports = {
     },
     fontFamily:{
 primary: 'DM Serif Display',
-secondary: 'Jost'
+      secondary: 'Jost',
+      custom: ['Sora', 'sans'],
     },
     extend: {
       
